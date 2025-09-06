@@ -4,11 +4,13 @@ class Usuario {
     - id: int
     - nombre: String
     - correo: String
-    + iniciarSesion{}: boolean
+    + iniciarSesion(): boolean
 }
 
 class Estudiante {
-    + realizarPedido{}: boolean
+    + realizarPedido(menu: Menu, items: list<item>, metodoPago: String): Pedido
      
 }
+
+class Administrador {}
 @enduml
