@@ -1,0 +1,14 @@
+@startuml casosusocoffeshop
+
+class Usuario {
+    - id: int
+    - nombre: String
+    - correo: String
+    + iniciarSesion{}: boolean
+}
+
+class Estudiante {
+    + realizarPedido{}: boolean
+     
+}
+@enduml
