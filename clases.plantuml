@@ -1,0 +1,60 @@
+@startuml casosusocoffeshop
+
+class Usuario {
+    - id: int
+    - nombre: String
+    - correo: String
+    + iniciarSesion(): boolean
+}
+
+class Estudiante {
+    + realizarPedido(menu: Menu, items: list<item>, metodoPago: String): Pedido 
+}
+
+class AdministradorCafeteria {
+    + gestionarMenu(): void
+    + actualizarTiempoEntrega(pedido:Pedido, tiempo: int): void
+}
+
+class Menu {
+    - id: int
+    - fechaCreacion: Date
+    - items: list<Item>
+    + mostrarMenu(): void
+}
+
+class Item {
+    - id: int
+    - nombre: String
+    - precio: double
+    - cantidad: int
+    + getPrecio(): double
+}
+
+class Pedido {
+    - id: int
+    - fechaCreacion: Date
+    - estado: String
+    - tiempoEntrega: int
+    + confirmar (): void
+    + entregar (): void
+    + cancelar (): void
+}
+
+class Notificacion {
+    - id: int
+    - mensaje: String
+    - fechaEnvio: Date
+    + enviar(usuario: Usuario): void
+}
+
+Usuario <|-- Estudiante
+Usuario <|-- AdministradorCafeteria
+Menu "1" --> "*" Item
+Estudiante "1" --> "*" Pedido
+Pedido "1" --> "*" Item
+Pedido --> Notificacion
+
+
+
+@enduml
